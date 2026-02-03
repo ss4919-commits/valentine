@@ -57,29 +57,55 @@ top: 120px;
 <body>
 
 <div class="card">
-<h1>💖 I am best ? 💖</h1>
-<button class="yes" onclick="yesClick()">Yes ❤️</button>
-<button class="no" id="noBtn">No 😢</button>
-</div>
+  <h1>💖 I am best ? 💖</h1>
 
+  <button class="yes" onclick="yesClick()">Yes ❤️</button>
+
+  <button class="no" id="noBtn">No 😢</button>
+</div>
 <script>
 const noBtn = document.getElementById("noBtn");
 const card = document.querySelector(".card");
 
 function randomMove() {
-const maxX = card.clientWidth - noBtn.offsetWidth;
-const maxY = card.clientHeight - noBtn.offsetHeight;
+  if (!noBtn || !card) return;
 
-const x = Math.random() * maxX;
-const y = Math.random() * maxY;
+  const maxX = card.clientWidth - noBtn.offsetWidth;
+  const maxY = card.clientHeight - noBtn.offsetHeight;
 
-noBtn.style.left = x + "px";
-noBtn.style.top = y + "px";
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
 }
 
-setInterval(randomMove, 700);
+setInterval(randomMove, 600);
 
-<script>
+function yesClick() {
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      background:#ff4d6d;
+      color:white;
+      text-align:center;
+      padding:20px;
+    ">
+      <h1>❤️ YES CLICKED ❤️</h1>
+      <p>You are the best 😌</p>
+
+      <img src="mypic.jpg.jpeg"
+           style="
+             width:220px;
+             height:220px;
+             object-fit:cover;
+             border-radius:20px;
+           ">
+    </div>
+  `;
+}
+</script>
 const noBtn = document.getElementById("noBtn");
 const card = document.querySelector(".card");
 
@@ -122,3 +148,4 @@ function yesClick() {
   `;
 }
 </script>
+
